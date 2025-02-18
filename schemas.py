@@ -20,10 +20,7 @@ class Book(BaseModel):
         orm_mode = True
 
 class AuthorCreate(Author):
-    name: str
-    bio: str
+    pass
 
 class BookCreate(Book):
-    title: str
-    summary: str
-    publication_date: date
+    pass

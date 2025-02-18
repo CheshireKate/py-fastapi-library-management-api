@@ -7,7 +7,7 @@ import schemas
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FASTAPI()
+app = FastAPI()
 
 def get_db() -> Session:
     db = SessionLocal()
@@ -31,11 +31,11 @@ def get_authors(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
 def create_book(
     book: schemas.BookCreate,
     author_id: int,
-    db: Session = Depends(get_db):
-    return crud.create_a_book(db=db, book=book, author_id=author_id)
+    db: Session = Depends(get_db)):
+        return crud.create_book(db=db, book=book, author_id=author_id)
 
 @app.post("/authors/", response_model=schemas.Author)
 def create_author(author: schemas.AuthorCreate, db: Session = Depends(get_db)):
-        return crud.create_author(db=db, author=book)
+    return crud.create_author(db=db, author=author)
 
 
